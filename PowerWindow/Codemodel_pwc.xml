@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeModel>
+	<Files>
+		<File path="./" name="detect_obstacle_endstop.c" annotate="yes" kind="source" id="ID17"/>
+		<File path="./" name="power_window_controller.c" annotate="yes" kind="source" id="ID18"/>
+		<File path="./" name="validate_driver.c" annotate="yes" kind="source" id="ID19"/>
+		<File path="./" name="validate_passenger.c" annotate="yes" kind="source" id="ID20"/>
+	</Files>
+	<Functions>
+		<Function name="detect_obstacle_endstop" sampleTime="0.01" fileref="ID17">
+			<Args/>
+			<Interface>
+				<InterfaceObj kind="in" var="Sa2_obstacle_position" scaling="ID1758"/>
+				<InterfaceObj kind="in" var="Sa2_window_position" scaling="ID1758"/>
+				<InterfaceObj kind="in" var="Sa2_move_up" scaling="ID1758"/>
+				<InterfaceObj kind="cal" var="Sa5_position_endstop_top" scaling="ID1758" fileref="ID17"/>
+				<InterfaceObj kind="disp" var="detection_endstop_bottom" scaling="ID1758" fileref="ID17"/>
+				<InterfaceObj kind="disp" var="detection_endstop_top" scaling="ID1758" fileref="ID17"/>
+				<InterfaceObj kind="disp" var="detection_obstacle" scaling="ID1758" fileref="ID17"/>
+				<InterfaceObj kind="out" var="Sa2_endstop_bottom" scaling="ID1758" fileref="ID17"/>
+				<InterfaceObj kind="out" var="Sa2_endstop_top" scaling="ID1758" fileref="ID17"/>
+				<InterfaceObj kind="out" var="Sa2_obstacle" scaling="ID1758" fileref="ID17"/>
+			</Interface>
+		</Function>
+		<Function name="power_window_controller" sampleTime="0.01" fileref="ID18">
+			<Args/>
+			<Interface>
+				<InterfaceObj kind="cal" var="Sa5_position_endstop_top" scaling="ID1758" fileref="ID17"/>
+				<InterfaceObj kind="disp" var="detection_endstop_bottom" scaling="ID1758" fileref="ID17"/>
+				<InterfaceObj kind="disp" var="detection_endstop_top" scaling="ID1758" fileref="ID17"/>
+				<InterfaceObj kind="disp" var="detection_obstacle" scaling="ID1758" fileref="ID17"/>
+				<InterfaceObj kind="disp" var="Sa2_endstop_bottom" scaling="ID1758" fileref="ID17"/>
+				<InterfaceObj kind="disp" var="Sa2_endstop_top" scaling="ID1758" fileref="ID17"/>
+				<InterfaceObj kind="disp" var="Sa2_obstacle" scaling="ID1758" fileref="ID17"/>
+				<InterfaceObj kind="cal" var="Sa1_auto_down_time" scaling="ID1758" fileref="ID18"/>
+				<InterfaceObj kind="cal" var="Sa1_auto_up_time" scaling="ID1758" fileref="ID18"/>
+				<InterfaceObj kind="cal" var="Sa1_emergency_down_time" scaling="ID1758" fileref="ID18"/>
+				<InterfaceObj kind="in" var="Sa1_obstacle_position" scaling="ID1758" fileref="ID18"/>
+				<InterfaceObj kind="in" var="Sa1_window_position" scaling="ID1758" fileref="ID18"/>
+				<InterfaceObj kind="in" var="Sa1_driver_down" scaling="ID1758" fileref="ID18"/>
+				<InterfaceObj kind="in" var="Sa1_driver_up" scaling="ID1758" fileref="ID18"/>
+				<InterfaceObj kind="out" var="Sa1_move_down" scaling="ID1758" fileref="ID18"/>
+				<InterfaceObj kind="out" var="Sa1_move_up" scaling="ID1758" fileref="ID18"/>
+				<InterfaceObj kind="out" var="Sa1_obstacle_detection" scaling="ID1758" fileref="ID18"/>
+				<InterfaceObj kind="in" var="Sa1_passenger_down" scaling="ID1758" fileref="ID18"/>
+				<InterfaceObj kind="in" var="Sa1_passenger_up" scaling="ID1758" fileref="ID18"/>
+				<InterfaceObj kind="disp" var="Ca1_moveDown" scaling="ID1758" fileref="ID18"/>
+				<InterfaceObj kind="disp" var="Ca1_moveUp" scaling="ID1758" fileref="ID18"/>
+				<InterfaceObj kind="disp" var="SIBFS_control_a" scaling="ID1758" access=".Ca10_iniPassengerUp"/>
+				<InterfaceObj kind="disp" var="SIBFS_control_a" scaling="ID1758" access=".Ca11_PassengerUp"/>
+				<InterfaceObj kind="disp" var="SIBFS_control_a" scaling="ID1758" access=".Ca13_driverUp"/>
+				<InterfaceObj kind="disp" var="SIBFS_control_a" scaling="ID1758" access=".Ca14_iniDriverUp"/>
+				<InterfaceObj kind="disp" var="SIBFS_control_a" scaling="ID1758" access=".Ca15_DriverUp"/>
+				<InterfaceObj kind="disp" var="SIBFS_control_a" scaling="ID1758" access=".Ca17_driverDown"/>
+				<InterfaceObj kind="disp" var="SIBFS_control_a" scaling="ID1758" access=".Ca18_iniDriverDown"/>
+				<InterfaceObj kind="disp" var="SIBFS_control_a" scaling="ID1758" access=".Ca19_DriverDown"/>
+				<InterfaceObj kind="disp" var="SIBFS_control_a" scaling="ID1758" access=".Ca21_emergencyDown"/>
+				<InterfaceObj kind="disp" var="SIBFS_control_a" scaling="ID1758" access=".Ca2_safe"/>
+				<InterfaceObj kind="disp" var="SIBFS_control_a" scaling="ID1758" access=".Ca3_driverNeutral"/>
+				<InterfaceObj kind="disp" var="SIBFS_control_a" scaling="ID1758" access=".Ca4_passengerneutral"/>
+				<InterfaceObj kind="disp" var="SIBFS_control_a" scaling="ID1758" access=".Ca5_passengerDown"/>
+				<InterfaceObj kind="disp" var="SIBFS_control_a" scaling="ID1758" access=".Ca6_iniPassengerDown"/>
+				<InterfaceObj kind="disp" var="SIBFS_control_a" scaling="ID1758" access=".Ca7_passengerDown"/>
+				<InterfaceObj kind="disp" var="SIBFS_control_a" scaling="ID1758" access=".Ca9_passengerUp"/>
+				<InterfaceObj kind="disp" var="Sa3_validated_down" scaling="ID1758" fileref="ID19"/>
+				<InterfaceObj kind="disp" var="Sa3_validated_neutral" scaling="ID1758" fileref="ID19"/>
+				<InterfaceObj kind="disp" var="Sa3_validated_up" scaling="ID1758" fileref="ID19"/>
+				<InterfaceObj kind="disp" var="Sa4_validated_down" scaling="ID1758" fileref="ID20"/>
+				<InterfaceObj kind="disp" var="Sa4_validated_neutral" scaling="ID1758" fileref="ID20"/>
+				<InterfaceObj kind="disp" var="Sa4_validated_up" scaling="ID1758" fileref="ID20"/>
+			</Interface>
+		</Function>
+		<Function name="validate_driver" sampleTime="0.01" fileref="ID19">
+			<Args/>
+			<Interface>
+				<InterfaceObj kind="in" var="Sa2_endstop_bottom" scaling="ID1758" fileref="ID17"/>
+				<InterfaceObj kind="in" var="Sa2_endstop_top" scaling="ID1758" fileref="ID17"/>
+				<InterfaceObj kind="in" var="Sa1_driver_down" scaling="ID1758" fileref="ID18"/>
+				<InterfaceObj kind="in" var="Sa1_driver_up" scaling="ID1758" fileref="ID18"/>
+				<InterfaceObj kind="out" var="Sa3_validated_down" scaling="ID1758" fileref="ID19"/>
+				<InterfaceObj kind="out" var="Sa3_validated_neutral" scaling="ID1758" fileref="ID19"/>
+				<InterfaceObj kind="out" var="Sa3_validated_up" scaling="ID1758" fileref="ID19"/>
+			</Interface>
+		</Function>
+		<Function name="validate_passenger" sampleTime="0.01" fileref="ID20">
+			<Args/>
+			<Interface>
+				<InterfaceObj kind="in" var="Sa2_endstop_bottom" scaling="ID1758" fileref="ID17"/>
+				<InterfaceObj kind="in" var="Sa2_endstop_top" scaling="ID1758" fileref="ID17"/>
+				<InterfaceObj kind="in" var="Sa1_passenger_down" scaling="ID1758" fileref="ID18"/>
+				<InterfaceObj kind="in" var="Sa1_passenger_up" scaling="ID1758" fileref="ID18"/>
+				<InterfaceObj kind="out" var="Sa4_validated_down" scaling="ID1758" fileref="ID20"/>
+				<InterfaceObj kind="out" var="Sa4_validated_neutral" scaling="ID1758" fileref="ID20"/>
+				<InterfaceObj kind="out" var="Sa4_validated_up" scaling="ID1758" fileref="ID20"/>
+			</Interface>
+		</Function>
+	</Functions>
+	<Scalings>
+		<Scaling id="ID1758" lsb="1.0" offset="0.0"/>
+	</Scalings>
+</CodeModel>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EpexCompilerSetup replaceable="true">
+	<!-- Variables: INSTALL_PATH -->
+	<compiler name="GCC" additionalInfo="GCC64 Compiler (C)" executable="gcc" location="/usr/bin" bitWidth="64">
+		<outputObjectFileOption option="-o" spaceKeyValue="true" />
+		<objectGenerationOption option="-c" spaceKeyValue="true" />
+		<defaultIncludePaths>
+			<item value="/usr/include" />
+			<item value="/usr/include/x86_64-linux-gnu/gnu" />
+		</defaultIncludePaths>
+		<defaultCompilerFlags>
+			<item value="-fPIC" />
+		</defaultCompilerFlags>
+		<includeFolderOption option="-I" spaceKeyValue="false" />
+		<macroDefineOption option="-D" spaceKeyValue="false" />
+		<environmentVariables>
+			<pair key="PATH" value="/usr/bin;/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin" />
+			<pair key="LIB" value="&#xA;" />
+		</environmentVariables>
+	</compiler>
+	<libtool executable="gcc" location="/usr/bin">
+		<outputFileOption option="-o" spaceKeyValue="true" />
+	</libtool>
+	<linker executable="gcc" location="/usr/bin">
+		<defaultLinkerFlags>
+			<item value="-L&quot;/usr/lib&quot;" />
+		</defaultLinkerFlags>
+		<dllOption option="-shared" spaceKeyValue="true" />
+		<outputFileOption option="-o" spaceKeyValue="true" />
+	</linker>
+</EpexCompilerSetup>
