@@ -18,9 +18,9 @@ this program to better fit your own workflow. Feel free to uncomment and modify 
 #### GLOBAL CONFIG VARIABLES
 VERSION = '22.3p0'
 EP_LOCATION = 'http://localhost:' #path to the REST server
-PROFILE_PATH = 'data/profile.epp' # this points to a .epp profile FILE
-MODEL_ROOT_LOCATION = 'data/PowerWindow_CCode/' # DIR where models reside
-REPORT_EXPORT_DIR = "data/Reports/" # this is a DIRECTORY, not a file
+PROFILE_PATH = '/data/profile.epp' # this points to a .epp profile FILE
+MODEL_ROOT_LOCATION = '/data/PowerWindow_CCode/' # DIR where models reside
+REPORT_EXPORT_DIR = "/data/Reports/" # this is a DIRECTORY, not a file
 
 ep = EPRestApi(8080, EP_LOCATION, VERSION) #the first attribute is the port on which the connection request will take place (default 8080)
 
