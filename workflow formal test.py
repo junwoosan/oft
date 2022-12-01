@@ -16,7 +16,7 @@ this program to better fit your own workflow. Feel free to uncomment and modify 
 
 #### GLOBAL CONFIG VARIABLES
 VERSION = '22.3p0'
-EP_LOCATION = 'http://192.168.19.189:' #path to the REST server
+EP_LOCATION = 'http://3.85.90.98:' #path to the REST server
 PROFILE_PATH = 'e/profile.epp' # this points to a .epp profile FILE
 MODEL_ROOT_LOCATION = 'e/PowerWindow_CCode/' # DIR where models reside
 REPORT_EXPORT_DIR = "e/Reports/" # this is a DIRECTORY, not a file
@@ -31,7 +31,7 @@ def getkeyfromressource(key, ressource):
 # applying preferences to use the correct Matlab
 preferences = \
   [
-     { 'preferenceName': 'GENERAL_COMPILER_SETTING', 'preferenceValue': 'GCC64 (64bit)' }
+     { 'preferenceName': 'GENERAL_COMPILER_SETTING', 'preferenceValue': 'GCC (64bit)' }
 ]
 ep.put_req('preferences', preferences) #only necessary for the first start
 
@@ -81,9 +81,9 @@ c_import_payload={
 }
 response = ep.post_req('architectures/ccode', c_import_payload)
 
-response = ep.put_req('profiles', {
-  'path': PROFILE_PATH
-})
+#response = ep.put_req('profiles', {
+#  'path': PROFILE_PATH
+#})
 end = time.time()
 print("Step 2 completed")
 print("Duration (in seconds): ")

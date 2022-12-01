@@ -2,6 +2,6 @@ FROM btces/ep
   
 
 
-COPY . /data
+COPY . e
 
 
