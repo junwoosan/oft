@@ -16,7 +16,7 @@ this program to better fit your own workflow. Feel free to uncomment and modify 
 
 #### GLOBAL CONFIG VARIABLES
 VERSION = '22.3p0'
-EP_LOCATION = 'http://3.85.90.98:' #path to the REST server
+EP_LOCATION = 'http://3.82.206.65:' #path to the REST server
 PROFILE_PATH = 'e/profile.epp' # this points to a .epp profile FILE
 MODEL_ROOT_LOCATION = 'e/PowerWindow_CCode/' # DIR where models reside
 REPORT_EXPORT_DIR = "e/Reports/" # this is a DIRECTORY, not a file
@@ -164,7 +164,7 @@ ft_report_creation_payload = {
 }
 response = ep.post_req('requirements-sources/' + requirementsource + '/formal-test-reports',ft_report_creation_payload)
 report_export_payload = {
-  'exportPath': 'e/Reports'
+  'exportPath': 'e/Reports/'
 }
 report_id = getkeyfromressource('uid', response.json()[0])
 response = ep.post_req('reports/'+report_id,report_export_payload)
