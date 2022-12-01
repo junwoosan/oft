@@ -4,7 +4,6 @@ import time
 
 """------------------------------------------------------------------------------------"""
 """
-ando-san ohayou
 Documentation notes on this file:
 
 1) You will have to adjust some of the global config variables below, based on your own setup.
@@ -17,10 +16,10 @@ this program to better fit your own workflow. Feel free to uncomment and modify 
 
 #### GLOBAL CONFIG VARIABLES
 VERSION = '22.3p0'
-EP_LOCATION = 'http://localhost:' #path to the REST server
-PROFILE_PATH = '/data/profile.epp' # this points to a .epp profile FILE
-MODEL_ROOT_LOCATION = '/data/PowerWindow_CCode/' # DIR where models reside
-REPORT_EXPORT_DIR = "/data/Reports/" # this is a DIRECTORY, not a file
+EP_LOCATION = 'http://192.168.19.189:' #path to the REST server
+PROFILE_PATH = 'e/profile.epp' # this points to a .epp profile FILE
+MODEL_ROOT_LOCATION = 'e/PowerWindow_CCode/' # DIR where models reside
+REPORT_EXPORT_DIR = "e/Reports/" # this is a DIRECTORY, not a file
 
 ep = EPRestApi(8080, EP_LOCATION, VERSION) #the first attribute is the port on which the connection request will take place (default 8080)
 
@@ -32,7 +31,7 @@ def getkeyfromressource(key, ressource):
 # applying preferences to use the correct Matlab
 preferences = \
   [
-     { 'preferenceName': 'GENERAL_COMPILER_SETTING', 'preferenceValue': 'GCC (64bit)' }
+     { 'preferenceName': 'GENERAL_COMPILER_SETTING', 'preferenceValue': 'GCC64 (64bit)' }
 ]
 ep.put_req('preferences', preferences) #only necessary for the first start
 
@@ -80,12 +79,11 @@ start = time.time()
 c_import_payload={
     'modelFile': MODEL_ROOT_LOCATION + 'Codemodel_pwc.xml',
 }
+response = ep.post_req('architectures/ccode', c_import_payload)
+
 response = ep.put_req('profiles', {
   'path': PROFILE_PATH
 })
-response = ep.post_req('architectures/ccode', c_import_payload)
-
-
 end = time.time()
 print("Step 2 completed")
 print("Duration (in seconds): ")
@@ -102,7 +100,7 @@ excel_req_import_payload = {
   'settings': [
     {
       'key': 'excel_file_path',
-      'value': 'data/Requirements_PowerWindow.xlsx'
+      'value': 'e/Requirements_PowerWindow.xlsx'
     },
     {
       'key': 'projectName_attr',
@@ -120,7 +118,7 @@ requirementsource = getkeyfromressource('uid',ep.get_req('requirements-sources')
 
 print("Step 3 importing Spec file")
 spec_import_payload = {
-  'specPath': 'data/Spec/Myspec.spec',
+  'specPath': 'e/Spec/Myspec.spec',
 }
 response = ep.post_req('specifications-import', spec_import_payload)
 end = time.time()
@@ -133,8 +131,8 @@ print("Step 4 importing execution records")
 start = time.time()
 er_import_payload = {
   'paths': [
-    'data/ERs/SIL_TestCase_failed.mdf',
-    'data/ERs/SIL_TestCase_passed.mdf'
+    'e/ERs/SIL_TestCase_failed.mdf',
+    'e/ERs/SIL_TestCase_passed.mdf'
   ],
   'kind': "SIL",
   'csvDelimiter': "SEMICOLON"
@@ -166,7 +164,7 @@ ft_report_creation_payload = {
 }
 response = ep.post_req('requirements-sources/' + requirementsource + '/formal-test-reports',ft_report_creation_payload)
 report_export_payload = {
-  'exportPath': 'data/Reports'
+  'exportPath': 'e/Reports'
 }
 report_id = getkeyfromressource('uid', response.json()[0])
 response = ep.post_req('reports/'+report_id,report_export_payload)

@@ -38,10 +38,11 @@ class EPRestApi:
     def __del__(self):
         # might already be closed. not our problem.
         if not self.definitively_closed:
-            try: 
-                self.close_application()
-            except:
-                pass
+            #try:
+               # self.close_application() #TODO: add this line to terminate the REST Server after a workflow
+            #except:
+             #   pass
+            print('Job Done')
 
     # Performs a get request on the given url extension
     def get_req(self, urlappendix):
@@ -96,7 +97,7 @@ class EPRestApi:
                 if key == 'jobID':
                     #t = 0
                     while response.status_code == 202:
-                        time.sleep(3)
+                        time.sleep(5)
                         #t += 2
                         #print('... {} s elapsed'.format(t))
                         print('.', end='')
@@ -106,7 +107,7 @@ class EPRestApi:
         return response
 
     def poll_long_running(self, jobID):
-        response = requests.get(self._url('/progress/' + jobID))
+        response = requests.get(self._url('/progress/'))
         if not response.ok:
             raise Exception("Error during request GET {}: {}".format( response.text))
         return response
