@@ -19,7 +19,7 @@ VERSION = '22.3p0'
 EP_LOCATION = 'http://3.85.90.98:' #path to the REST server
 PROFILE_PATH = 'e/profile.epp' # this points to a .epp profile FILE
 MODEL_ROOT_LOCATION = 'e/PowerWindow_CCode/' # DIR where models reside
-REPORT_EXPORT_DIR = "e/" # this is a DIRECTORY, not a file
+REPORT_EXPORT_DIR = "e/Reports/" # this is a DIRECTORY, not a file
 
 ep = EPRestApi(8080, EP_LOCATION, VERSION) #the first attribute is the port on which the connection request will take place (default 8080)
 
@@ -33,7 +33,7 @@ preferences = \
   [
      { 'preferenceName': 'GENERAL_COMPILER_SETTING', 'preferenceValue': 'GCC (64bit)' }
 ]
-#ep.put_req('preferences', preferences) #only necessary for the first start
+ep.put_req('preferences', preferences) #only necessary for the first start
 
 ##########------------------- STEP 1: open existing project (optional) -------------------##########
 # This step is optional in the container workflow
@@ -164,7 +164,7 @@ ft_report_creation_payload = {
 }
 response = ep.post_req('requirements-sources/' + requirementsource + '/formal-test-reports',ft_report_creation_payload)
 report_export_payload = {
-  'exportPath': 'e/'
+  'exportPath': 'e/Reports'
 }
 report_id = getkeyfromressource('uid', response.json()[0])
 response = ep.post_req('reports/'+report_id,report_export_payload)
