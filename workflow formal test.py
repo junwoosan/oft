@@ -16,7 +16,7 @@ this program to better fit your own workflow. Feel free to uncomment and modify 
 
 #### GLOBAL CONFIG VARIABLES
 VERSION = '22.3p0'
-EP_LOCATION = 'http://3.82.206.65:' #path to the REST server
+EP_LOCATION = 'http://34.239.105.247:' #path to the REST server
 PROFILE_PATH = 'e/profile.epp' # this points to a .epp profile FILE
 MODEL_ROOT_LOCATION = 'e/PowerWindow_CCode/' # DIR where models reside
 REPORT_EXPORT_DIR = "e/Reports/" # this is a DIRECTORY, not a file
@@ -33,8 +33,7 @@ preferences = \
   [
      { 'preferenceName': 'GENERAL_COMPILER_SETTING', 'preferenceValue': 'GCC (64bit)' }
 ]
-ep.put_req('preferences', preferences) #only necessary for the first start
-
+ep.put_req('preferences', preferences)
 ##########------------------- STEP 1: open existing project (optional) -------------------##########
 # This step is optional in the container workflow
 # open existing profile
