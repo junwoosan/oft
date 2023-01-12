@@ -9,7 +9,7 @@
 			</InfoGroup>
 			<InfoGroup name="user">
 				<Info name="name">forli</Info>
-				<Info name="date">木 12. 1月 15:03:35 2023</Info>
+				<Info name="date">木 12. 1月 15:12:16 2023</Info>
 			</InfoGroup>
 		</InfoGroups>
 	</General>
@@ -27,13 +27,14 @@
 			<SpecificationVariableGroup name="output">
 				<SpecificationVariable name="Sa1_move_down" identifier="OUTPUT:Sa1_move_down:var" id="ComponentID1VariableID3" />
 				<SpecificationVariable name="Sa1_obstacle_detection" identifier="OUTPUT:Sa1_obstacle_detection:var" id="ComponentID1VariableID4" />
+				<SpecificationVariable name="Sa1_move_up" identifier="OUTPUT:Sa1_move_up:var" id="ComponentID1VariableID5" />
 			</SpecificationVariableGroup>
 			<SpecificationVariableGroup name="local">
-				<SpecificationVariable name="detection_endstop_bottom" identifier="LOCAL:detection_endstop_bottom:var" id="ComponentID1VariableID5" />
+				<SpecificationVariable name="detection_endstop_bottom" identifier="LOCAL:detection_endstop_bottom:var" id="ComponentID1VariableID6" />
 			</SpecificationVariableGroup>
 			<SpecificationVariableGroup name="calibration" />
 			<SpecificationVariableGroup name="macro">
-				<SpecificationVariable name="50Ms" id="ComponentID1VariableID6">
+				<SpecificationVariable name="50Ms" id="ComponentID1VariableID7">
 					<SpecificationVariableAttribute name="definition">50</SpecificationVariableAttribute>
 					<SpecificationVariableAttribute name="description">(...)50 [ms](...)</SpecificationVariableAttribute>
 					<SpecificationVariableAttribute length="2" offset="83" name="reference">InformalRequirement::REQ_PW_1_1</SpecificationVariableAttribute>
@@ -41,20 +42,20 @@
 					<SpecificationVariableAttribute name="timeContext">no</SpecificationVariableAttribute>
 					<SpecificationVariableAttribute name="timeUnit" />
 				</SpecificationVariable>
-				<SpecificationVariable name="driverDown" id="ComponentID1VariableID7">
+				<SpecificationVariable name="driverDown" id="ComponentID1VariableID8">
 					<SpecificationVariableAttribute name="definition">Sa1_driver_up</SpecificationVariableAttribute>
 					<SpecificationVariableAttribute name="description">(...)driver down(...)</SpecificationVariableAttribute>
 					<SpecificationVariableAttribute length="11" offset="7" name="reference">InformalRequirement::REQ_PW_1_2</SpecificationVariableAttribute>
 					<SpecificationVariableAttribute name="timeContext">no</SpecificationVariableAttribute>
 					<SpecificationVariableAttribute name="timeUnit" />
 				</SpecificationVariable>
-				<SpecificationVariable name="notAtTheBottomEnd" id="ComponentID1VariableID8">
+				<SpecificationVariable name="notAtTheBottomEnd" id="ComponentID1VariableID9">
 					<SpecificationVariableAttribute name="definition">!detection_endstop_bottom</SpecificationVariableAttribute>
 					<SpecificationVariableAttribute name="description">(...)not at the bottom end(...)</SpecificationVariableAttribute>
 					<SpecificationVariableAttribute name="timeContext">no</SpecificationVariableAttribute>
 					<SpecificationVariableAttribute name="timeUnit" />
 				</SpecificationVariable>
-				<SpecificationVariable name="movingDown" id="ComponentID1VariableID9">
+				<SpecificationVariable name="movingDown" id="ComponentID1VariableID10">
 					<SpecificationVariableAttribute name="definition">Sa1_move_down</SpecificationVariableAttribute>
 					<SpecificationVariableAttribute name="description">(...)moving down(...)</SpecificationVariableAttribute>
 					<SpecificationVariableAttribute length="11" offset="62" name="reference">InformalRequirement::REQ_PW_1_2</SpecificationVariableAttribute>
@@ -62,14 +63,14 @@
 					<SpecificationVariableAttribute name="timeContext">no</SpecificationVariableAttribute>
 					<SpecificationVariableAttribute name="timeUnit" />
 				</SpecificationVariable>
-				<SpecificationVariable name="obstacleIsDetected" id="ComponentID1VariableID10">
+				<SpecificationVariable name="obstacleIsDetected" id="ComponentID1VariableID11">
 					<SpecificationVariableAttribute name="definition">Sa1_obstacle_detection</SpecificationVariableAttribute>
 					<SpecificationVariableAttribute name="description">(...)obstacle is detected(...)</SpecificationVariableAttribute>
 					<SpecificationVariableAttribute length="20" offset="6" name="reference">InformalRequirement::REQ_PW_4_1</SpecificationVariableAttribute>
 					<SpecificationVariableAttribute name="timeContext">no</SpecificationVariableAttribute>
 					<SpecificationVariableAttribute name="timeUnit" />
 				</SpecificationVariable>
-				<SpecificationVariable name="10Ms" id="ComponentID1VariableID11">
+				<SpecificationVariable name="10Ms" id="ComponentID1VariableID12">
 					<SpecificationVariableAttribute name="definition">10</SpecificationVariableAttribute>
 					<SpecificationVariableAttribute name="description">(...)10(...)</SpecificationVariableAttribute>
 					<SpecificationVariableAttribute length="2" offset="77" name="reference">InformalRequirement::REQ_PW_4_1</SpecificationVariableAttribute>
@@ -146,6 +147,43 @@
 					</Action>
 					<FormalAssumptions>
 						<FormalAssumptionLinkGroup name="pattern" />
+					</FormalAssumptions>
+				</FormalSpecification>
+			</Specification>
+			<Specification id="ComponentID1SpecificationID2" parent="">
+				<InfoGroup name="informal">
+					<Info name="name">F_REQ_PW_1_1</Info>
+					<Info name="description" />
+					<Info name="reference_length">85</Info>
+					<Info name="reference_offset">0</Info>
+					<Info name="reference">InformalRequirement::REQ_PW_1_1</Info>
+				</InfoGroup>
+				<FormalSpecification id="ComponentID1FormalSpecificationID2" specId="SPECID:UP:V1.0" accept_overflow="true">
+					<Startup type="immediate" />
+					<ActivationMode type="cyclic" />
+					<GlobalScope>
+						<Expression isInfinite="true" />
+					</GlobalScope>
+					<Trigger phaseId="1">
+						<InterpretationMode type="progress" />
+						<Condition>
+							<Expression>Sa1_driver_up</Expression>
+						</Condition>
+					</Trigger>
+					<Action phaseId="2">
+						<InterpretationMode type="progress" />
+						<WaitDuration>
+							<Expression isInfinite="false" unit="ms" interval="lower">0</Expression>
+							<Expression isInfinite="false" unit="ms" interval="upper">50</Expression>
+						</WaitDuration>
+						<Condition>
+							<Expression>Sa1_move_up</Expression>
+						</Condition>
+					</Action>
+					<FormalAssumptions>
+						<FormalAssumptionLinkGroup name="pattern">
+							<FormalAssumptionLink formalAssumption="ComponentID1FormalAssumptionID1" active="1" />
+						</FormalAssumptionLinkGroup>
 					</FormalAssumptions>
 				</FormalSpecification>
 			</Specification>

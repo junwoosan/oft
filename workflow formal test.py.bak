@@ -17,7 +17,7 @@ this program to better fit your own workflow. Feel free to uncomment and modify 
 #### GLOBAL CONFIG VARIABLES
 VERSION = '22.3p0'
 EP_LOCATION = 'http://localhost:' #path to the REST server
-PROFILE_PATH = 'e/reports/profile.epp' # this points to a .epp profile FILE
+PROFILE_PATH = 'e/Reports/profile.epp' # this points to a .epp profile FILE
 MODEL_ROOT_LOCATION = 'e/PowerWindow_CCode/' # DIR where models reside
 REPORT_EXPORT_DIR = "e/Reports/" # this is a DIRECTORY, not a file
 

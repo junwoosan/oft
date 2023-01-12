@@ -131,7 +131,13 @@ start = time.time()
 er_import_payload = {
   'paths': [
     'e/ERs/SIL_TestCase_failed.mdf',
-    'e/ERs/SIL_TestCase_passed.mdf'
+    'e/ERs/SIL_TestCase_passed.mdf',
+    'e/ERs/SIL_TC_ATG_F_REQ_PW_1_1.mdf',
+    'e/ERs/SIL_TC_ATG_F_REQ_PW_1_2.mdf',
+    'e/ERs/SIL_testcase.mdf',
+    'e/ERs/SIL_VariantTestCase Variant1.mdf',
+    'e/ERs/SIL_VariantTestCase Variant2.mdf',
+    
   ],
   'kind': "SIL",
   'csvDelimiter': "SEMICOLON"
